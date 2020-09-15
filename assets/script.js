@@ -1,5 +1,5 @@
 // Hook question container
-var displayQuestionsEl = document.querySelector(".display-questions")
+var displayQuestionEl = document.querySelector(".display-questions")
 // Hook timer element
 var timerEl = document.querySelector(".timer")
 // Hook results element
@@ -26,7 +26,7 @@ mainDisplay.textContent = "Press button to start the quiz!"
 // add text to button
 startBtn.textContent = "Start"
 // append text and button to the question container
-displayQuestionsEl.append(mainDisplay, startBtn)
+displayQuestionEl.append(mainDisplay, startBtn)
 }
 
 // function that goes right to the showTimer and nextQuestion functions; shows the question and starts the timer
@@ -58,31 +58,39 @@ function nextQuestion() {
 // console.log current question
     console.log(currentQuestion);
 
-    displayQuestionsEl.textContent = "";
+    displayQuestionEl.textContent = "";
 
     mainDisplay.textContent = currentQuestion.title;
     // append text to main container
-    displayQuestionsEl.append(mainDisplay);
+    displayQuestionEl.append(mainDisplay);
     // div element for the answer choices
     var choicesContainer = document.createElement("button")
+
     // create for loop
-    for (let i = 0t i < currentQuestion.choices.length i++) {
+    for (let i = 0; i < currentQuestion.choices.length; i++) {
+
         // added button for the answer choices
-        var choiceBtn = document.createElement("button)");
+        var choiceBtn = document.createElement("button");
         // button text reflects current question choice when selected
         choiceBtn.textContent = currentQuestion.choices[i];
         // Event listener to check answers
         choiceBtn.addEventListener("click", checkAnswer)
         choicesContainer.append(choiceBtn);
+
     }
 
-    displayQuestionsEl.append(choicesContainer);
-
+    displayQuestionEl.append(choicesContainer); 
 
 }
 
 // function that checks the answer
-function checkAnswer() {
+function checkAnswer(event) {
+
+// increase index by 1
+index++;
+
+// go to next question
+nextQuestion();
 
 }
 
