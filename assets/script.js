@@ -85,12 +85,22 @@ function nextQuestion() {
 
 // function that checks the answer
 function checkAnswer(event) {
+    
+    var responseText = event.target.textContent;
+    console.log(responseText);
 
-// increase index by 1
-index++;
+    // conditionals to check answers
+    if (responseText === questions[index].answer){
+        console.log("Correct");
+    } else {
+        console.log("Incorrect");
+    }
 
-// go to next question
-nextQuestion();
+    // increase index by 1
+    index++;
+    
+    // go to next question
+    nextQuestion();
 
 }
 
