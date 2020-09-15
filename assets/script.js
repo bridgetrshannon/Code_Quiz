@@ -11,6 +11,14 @@ var mainDisplay = document.createElement("h3");
 // Button to start quiz
 var startBtn = document.createElement("button");
 
+
+// Global variables
+// variable to store timer number
+var timer = 75;
+// variable to store index
+var index = 0; 
+
+
 // function loads content on page
 function openingPage() {
 // targeting and entering text
@@ -29,6 +37,7 @@ function startQuiz() {
 
 // function for the timer 
 function showTimer() {
+timerEl.textContent = timer;
 
 }
 
@@ -41,3 +50,8 @@ function nextQuestion() {
 function checkAnswer() {
 
 }
+
+// add event listener to start quiz
+startBtn.addEventListener("click", startQuiz)
+// call opening page function when page loads
+openingPage()
