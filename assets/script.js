@@ -37,8 +37,18 @@ function startQuiz() {
 
 // function for the timer 
 function showTimer() {
-timerEl.textContent = timer;
-
+    timerEl.textContent = timer;
+    // variable to set interval 
+    var questionTimer = setInterval(function(){
+        // decrease timer by 1
+        timer--
+        // display timer to screen
+        timerEl.textContent = timer;
+        // if timer hits 0, clear interval
+        if ( timer <= 0) {
+            clearInterval(questionTimer);
+        }
+    }, 1 * 1000)
 }
 
 // function for the next question
@@ -54,4 +64,4 @@ function checkAnswer() {
 // add event listener to start quiz
 startBtn.addEventListener("click", startQuiz)
 // call opening page function when page loads
-openingPage()
+openingPage();
