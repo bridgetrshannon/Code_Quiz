@@ -5,6 +5,8 @@ var timerEl = document.querySelector(".timer")
 // Hook results element
 var resultsEl = document.querySelector(".results")
 
+var highScore = 0
+
 
 // h3 for instructions and questions
 var mainDisplay = document.createElement("h3");
@@ -44,6 +46,10 @@ function showTimer() {
         timer--
         // display timer to screen
         timerEl.textContent = timer;
+
+        // conditional about deducting time if answer is wrong
+        // if ()
+
         // if timer hits 0, clear interval
         if ( timer <= 0) {
             clearInterval(questionTimer);
@@ -98,11 +104,13 @@ function checkAnswer(event) {
 
     // increase index by 1
     index++;
-    
+
     // go to next question
     nextQuestion();
 
 }
+
+localStorage.setItem("highScore", highScore);
 
 // add event listener to start quiz
 startBtn.addEventListener("click", startQuiz)
