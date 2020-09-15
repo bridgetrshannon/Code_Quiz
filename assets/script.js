@@ -1,7 +1,7 @@
 // Hook question container
 var displayQuestionsEl = document.querySelector(".display-questions")
 // Hook timer element
-var timeEl = document.querySelector(".timer")
+var timerEl = document.querySelector(".timer")
 // Hook results element
 var resultsEl = document.querySelector(".results")
 
@@ -53,6 +53,31 @@ function showTimer() {
 
 // function for the next question
 function nextQuestion() {
+// variable to store current question
+    var currentQuestion = questions[index];
+// console.log current question
+    console.log(currentQuestion);
+
+    displayQuestionsEl.textContent = "";
+
+    mainDisplay.textContent = currentQuestion.title;
+    // append text to main container
+    displayQuestionsEl.append(mainDisplay);
+    // div element for the answer choices
+    var choicesContainer = document.createElement("button")
+    // create for loop
+    for (let i = 0t i < currentQuestion.choices.length i++) {
+        // added button for the answer choices
+        var choiceBtn = document.createElement("button)");
+        // button text reflects current question choice when selected
+        choiceBtn.textContent = currentQuestion.choices[i];
+        // Event listener to check answers
+        choiceBtn.addEventListener("click", checkAnswer)
+        choicesContainer.append(choiceBtn);
+    }
+
+    displayQuestionsEl.append(choicesContainer);
+
 
 }
 
