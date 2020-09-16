@@ -1,14 +1,16 @@
 // Hook question container
-var displayQuestionEl = document.querySelector(".display-questions")
+var displayQuestionEl = document.querySelector(".display-questions");
 // Hook timer element
-var timerEl = document.querySelector(".timer")
+var timerEl = document.querySelector(".timer");
 // Hook results element
-var resultsEl = document.querySelector(".results")
+var resultsEl = document.querySelector(".results");
 
 // Added during tutor session
 // Variables for the high score
-var scoreEl = document.querySelector("score")
-var intials = document.getElementById("intials")
+var scoreEl = document.querySelector("score");
+var intialsInput = document.getElementById("intials-text");
+
+var highscoreForm = document.querySelector('#highscores-form');
 
 // h3 for instructions and questions
 var mainDisplay = document.createElement("h3");
@@ -24,8 +26,9 @@ var index = 0;
 var questionTimer;
 
 // Added during tutor session
-var score = 0;
+var highscores = [];
 
+init();
 
 // function loads content on page
 function openingPage() {
@@ -113,8 +116,8 @@ function checkAnswer(event) {
     // if timer <= 0 or index is more than array length - 1, run highScore function
     if ( timer <= 0 || index > questions.length-1) {
         clearInterval(questionTimer);
-        // if timer <= 0, call highScore function
-        highScore();
+        // if timer <= 0, call submitHighScore function
+        storeHighScores();
     } else {
           // go to next question
         nextQuestion();
@@ -122,34 +125,62 @@ function checkAnswer(event) {
 
 }
 
-// Added during tutor session
-function highScore() {
-    displayQuestionEl.textContent = "";
-    var score
-    console.log("score")
+function renderHighScores() {
+    var highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+    console.log(highscores)
 
-// scoreEl.textContent = "Enter high score here!"
+    for (var i =0; i < highscores.length; i++) {
+        var highscore = highscores[i];
 
-// append input field for initials
-// append to class of score
-// button for initials
-// 
-
+        var li = document.createElement("li"); 
+        li.textContent = highscore.initialsInput + " - " + highscore.highScore;
+        li.setAttribute.append(li);
+    }
 }
 
 // Create function that starts when intial button is pressed
 function init() {
-    localStorage.setItem("highScore", "timer");
-    // set object and pass timer value and intials through it 
-      // variable
-      console.log(initials)
+    var storedHighScores = JSON.parse(localStorage.getItem("highscores"));
+    
+    if (storedHighScores !== null) {
+        highscores = storedHighScores;
 }
-init();
+
+renderHighScores();
+
+}
+
+function storeHighScores() {
+    // Stringify and set "todos" key in localStorage to todos array
+    localStorage.setItem("highscores", JSON.stringify(highscores));
+  }
+  
+  // When form is submitted...
+  highscoreForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+  
+    var intialText = intialsInput.value.trim();
+  
+    // Return from function early if submitted todoText is blank
+    if (initialText === "") {
+      return;
+    }
+  
+    // Add new todoText to todos array, clear the input
+    highscores.push(intialText);
+    intialsInput.value = "";
+  
+    // Store updated todos in localStorage, re-render the list
+    storeHighScores();
+    renderHighScores();
+  });
+
+  function endGame() {
+      
+  }
 
 // add event listener to start quiz
 startBtn.addEventListener("click", startQuiz)
 // call opening page function when page loads
 openingPage();
-
-
-// Code template from day 2 number 28
+;

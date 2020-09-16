@@ -13,21 +13,22 @@
         <div class="timer"></div>
         <div class="display-questions">
             <div class="score"></div>
-                <div id="initials">
-                    <h1>Code Quiz Challenge</h1>
-                </div>
+            <div id="initials">
+                <h1>Code Quiz Challenge</h1>
+            </div>
         </div>
 
         <div class="results">
-        <div id="highscores-form">
-            <form>
-                <input id="initials" type="text"/>
-                <button type="submit">Submit</button>
-            </form>
-
-        </div>
-        <script src="./assets/questions.js"></script>
-        <script src="./assets/script.js"></script>
+            <div class="highscores">
+                <div id="highscores-form" method="POST">
+                    <form>
+                        <input type="text" name="initials" id="initials-text" />
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <script src="./assets/questions.js"></script>
+            <script src="./assets/script.js"></script>
 </body>
 
 </html>
