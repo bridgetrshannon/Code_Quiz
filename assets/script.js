@@ -102,7 +102,7 @@ function checkAnswer(event) {
     console.log(responseText);
 
     // conditionals to check answers
-    if (responseText === questions[index].answer){
+    if (index < questions.length && responseText === questions[index].answer){
         console.log("Correct");
     } else {
         console.log("Incorrect");
