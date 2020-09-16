@@ -125,7 +125,7 @@ function checkAnswer(event) {
 // Added during tutor session
 function highScore() {
     displayQuestionEl.textContent = "";
-    var highScore
+    var score
     console.log("score")
 
 // scoreEl.textContent = "Enter high score here!"
@@ -138,23 +138,18 @@ function highScore() {
 }
 
 // Create function that starts when intial button is pressed
-    // inside that function - set local storage, set object and pass timer value and intials through it 
-// Added during tutor session
-localStorage.setItem("highScore", "timer");
-
-// Added during tutor session
-// function to end game, clear timer
-function endGame() {
-    // when game ends, clear timer
-    clearTimeout(timer);
-    // variable
-    console.log(initials)
-   
+function init() {
+    localStorage.setItem("highScore", "timer");
+    // set object and pass timer value and intials through it 
+      // variable
+      console.log(initials)
 }
-
-// localStorage.setItem("highScore", highScore);
+init();
 
 // add event listener to start quiz
 startBtn.addEventListener("click", startQuiz)
 // call opening page function when page loads
 openingPage();
+
+
+// Code template from day 2 number 28
