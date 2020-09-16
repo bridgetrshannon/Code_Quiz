@@ -5,6 +5,9 @@ var timerEl = document.querySelector(".timer")
 // Hook results element
 var resultsEl = document.querySelector(".results")
 
+// Added during tutor session
+// Variables for the high score
+var scoreEl = document.querySelector("score")
 var intials = document.getElementById("intials")
 
 // h3 for instructions and questions
@@ -12,13 +15,16 @@ var mainDisplay = document.createElement("h3");
 // Button to start quiz
 var startBtn = document.createElement("button");
 
-var submitBtn = document.createElement("button");
-
 // Global variables
 // variable to store timer number
 var timer = 75;
 // variable to store index
 var index = 0; 
+
+var questionTimer;
+
+// Added during tutor session
+var score = 0;
 
 
 // function loads content on page
@@ -41,14 +47,11 @@ function startQuiz() {
 function showTimer() {
     timerEl.textContent = timer;
     // variable to set interval 
-    var questionTimer = setInterval(function(){
+    questionTimer = setInterval(function(){
         // decrease timer by 1
         timer--
         // display timer to screen
         timerEl.textContent = timer;
-
-        // conditional about deducting time if answer is wrong
-        // if ()
 
         // if timer hits 0, clear interval
         if ( timer <= 0) {
@@ -83,11 +86,6 @@ function nextQuestion() {
         choiceBtn.addEventListener("click", checkAnswer)
         choicesContainer.append(choiceBtn);
 
-    // for function to increase score by 1 with each correct answer
-    function score(params) {
-        
-    }
-
     }
 
     displayQuestionEl.append(choicesContainer); 
@@ -106,26 +104,52 @@ function checkAnswer(event) {
     } else {
         console.log("Incorrect");
          // added timer -= to subtract time for incorrect answers
-         timer -= 20;
+         timer -= 15;
     }
 
     // increase index by 1
     index++;
 
-    // go to next question
-    nextQuestion();
+    // if timer <= 0 or index is more than array length - 1, run highScore function
+    if ( timer <= 0 || index > questions.length-1) {
+        clearInterval(questionTimer);
+        // if timer <= 0, call highScore function
+        highScore();
+    } else {
+          // go to next question
+        nextQuestion();
+    }
 
 }
 
+// Added during tutor session
+function highScore() {
+    displayQuestionEl.textContent = "";
+    var highScore
+    console.log("score")
+
+// scoreEl.textContent = "Enter high score here!"
+
+// append input field for initials
+// append to class of score
+// button for initials
+// 
+
+}
+
+// Create function that starts when intial button is pressed
+    // inside that function - set local storage, set object and pass timer value and intials through it 
+// Added during tutor session
+localStorage.setItem("highScore", "timer");
+
+// Added during tutor session
 // function to end game, clear timer
 function endGame() {
     // when game ends, clear timer
     clearTimeout(timer);
     // variable
     console.log(initials)
-
    
-
 }
 
 // localStorage.setItem("highScore", highScore);

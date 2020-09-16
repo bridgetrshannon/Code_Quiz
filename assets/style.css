@@ -3,3 +3,7 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: darkslateblue;
 }
+
+.container {
+    padding-top: 50px;
+}
