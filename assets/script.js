@@ -105,6 +105,8 @@ function checkAnswer(event) {
         console.log("Correct");
     } else {
         console.log("Incorrect");
+         // added timer -= to subtract time for incorrect answers
+         timer -= 20;
     }
 
     // increase index by 1
