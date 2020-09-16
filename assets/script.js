@@ -5,14 +5,14 @@ var timerEl = document.querySelector(".timer")
 // Hook results element
 var resultsEl = document.querySelector(".results")
 
-var highScore = 0
-
+var intials = document.getElementById("intials")
 
 // h3 for instructions and questions
 var mainDisplay = document.createElement("h3");
 // Button to start quiz
 var startBtn = document.createElement("button");
 
+var submitBtn = document.createElement("button");
 
 // Global variables
 // variable to store timer number
@@ -83,6 +83,11 @@ function nextQuestion() {
         choiceBtn.addEventListener("click", checkAnswer)
         choicesContainer.append(choiceBtn);
 
+    // for function to increase score by 1 with each correct answer
+    function score(params) {
+        
+    }
+
     }
 
     displayQuestionEl.append(choicesContainer); 
@@ -110,7 +115,18 @@ function checkAnswer(event) {
 
 }
 
-localStorage.setItem("highScore", highScore);
+// function to end game, clear timer
+function endGame() {
+    // when game ends, clear timer
+    clearTimeout(timer);
+    // variable
+    console.log(initials)
+
+   
+
+}
+
+// localStorage.setItem("highScore", highScore);
 
 // add event listener to start quiz
 startBtn.addEventListener("click", startQuiz)
