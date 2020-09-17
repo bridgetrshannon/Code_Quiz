@@ -35,7 +35,7 @@ var page = path.split("/").pop();
 
 if (page == "highscores.html")
 {
-    renderHighScores();
+    storeHighScores();
 } 
 else {
     openingPage();
@@ -199,10 +199,11 @@ function storeHighScores() {
      localStorage.setItem("highscores", JSON.stringify(highscores));
 
     console.log(highscores); 
-  
+
 })
-   
-  };
+
+
+};
 
 // add event listener to start quiz
 startBtn.addEventListener("click", startQuiz)

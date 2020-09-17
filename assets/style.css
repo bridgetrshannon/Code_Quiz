@@ -15,6 +15,8 @@ h1 {
 
 #highscores-form {
     padding-top: 50px;
-    /* 
-    display: ; */
+    
+     /* should be display: none; until reaching the highscores.html page, then should display
+    display: none;
+    */
 }
