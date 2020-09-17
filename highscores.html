@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>Code Quiz Challenge</title>
+</head>
+
+<body>
+    <div class="container" style="text-align: center;">
+        <div class="timer"></div>
+        <div class="display-questions">
+            <div class="score"></div>
+            <div id="initials">
+                <h1>High Scores</h1>
+            </div>
+        </div>
+
+        <div class="results">
+            <div class="highscores">
+                <div id="highscores-form" method="POST">
+                    <form>
+                        <input type="text" name="initials" id="initials-text" />
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <script src="./assets/questions.js"></script>
+            <script src="./assets/script.js"></script>
+</body>
+
+</html>

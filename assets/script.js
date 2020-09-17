@@ -30,6 +30,17 @@ var highscores = [];
 
 init();
 
+var path = window.location.pathname;
+var page = path.split("/").pop();
+
+if (page == "highscores.html")
+{
+    renderHighScores();
+} 
+else {
+    openingPage();
+}
+
 // function loads content on page
 function openingPage() {
 // targeting and entering text
@@ -117,7 +128,7 @@ function checkAnswer(event) {
     if ( timer <= 0 || index > questions.length-1) {
         clearInterval(questionTimer);
         // if timer <= 0, call submitHighScore function
-        storeHighScores();
+        renderHighScores();
     } else {
           // go to next question
         nextQuestion();
@@ -126,19 +137,32 @@ function checkAnswer(event) {
 }
 
 function renderHighScores() {
-    var highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+
+    displayQuestionEl.textContent = "";
+
+    var storedHighScores = JSON.parse(localStorage.getItem("highscores")) || [];
     console.log(highscores)
 
-    for (var i =0; i < highscores.length; i++) {
+    if (storedHighScores !== null)
+    {
+        highscores = storedHighScores;
+    }
+
+    for (var i =0; i < highscores.length; i++) 
+    {
         var highscore = highscores[i];
 
         var li = document.createElement("li"); 
-        li.textContent = highscore.initialsInput + " - " + highscore.highScore;
-        li.setAttribute.append(li);
+        li.textContent = highscore;
+        li.setAttribute("data-index", i);
+
+        displayQuestionEl.append(li);
     }
 }
 
 // Create function that starts when intial button is pressed
+
+// something in the init function is making my title disappear 
 function init() {
     var storedHighScores = JSON.parse(localStorage.getItem("highscores"));
     
@@ -151,10 +175,10 @@ renderHighScores();
 }
 
 function storeHighScores() {
-    // Stringify and set "todos" key in localStorage to todos array
+
     localStorage.setItem("highscores", JSON.stringify(highscores));
-  }
-  
+}
+   
   // When form is submitted...
   highscoreForm.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -165,22 +189,24 @@ function storeHighScores() {
     if (initialText === "") {
       return;
     }
-  
+    
+    // enter in a link to the high scores page   
+
     // Add new todoText to todos array, clear the input
     highscores.push(intialText);
     intialsInput.value = "";
-  
-    // Store updated todos in localStorage, re-render the list
-    storeHighScores();
-    renderHighScores();
-  });
 
-  function endGame() {
-      
-  }
+     // Stringify and set "todos" key in localStorage to todos array
+     localStorage.setItem("highscores", JSON.stringify(highscores));
+
+    console.log(highscores); 
+  
+  });
 
 // add event listener to start quiz
 startBtn.addEventListener("click", startQuiz)
 // call opening page function when page loads
 openingPage();
-;
+{
+
+}
