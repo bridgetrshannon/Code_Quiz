@@ -4,10 +4,17 @@ body {
     color: darkslateblue;
 }
 
+h1 {
+    padding-bottom: 50px;
+}
+
 .container {
     padding-top: 50px;
 }
 
+
 #highscores-form {
-    display: none;
+    padding-top: 50px;
+    /* 
+    display: ; */
 }

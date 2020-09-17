@@ -8,7 +8,7 @@ var resultsEl = document.querySelector(".results");
 // Added during tutor session
 // Variables for the high score
 var scoreEl = document.querySelector("score");
-var intialsInput = document.getElementById("intials-text");
+var initialsInput = document.getElementById("initials-text");
 
 var highscoreForm = document.querySelector('#highscores-form');
 
@@ -160,7 +160,7 @@ function renderHighScores() {
     }
 }
 
-// Create function that starts when intial button is pressed
+// Create function that starts when initial button is pressed
 
 // something in the init function is making my title disappear 
 function init() {
@@ -170,20 +170,19 @@ function init() {
         highscores = storedHighScores;
 }
 
-renderHighScores();
+    storeHighScores();
 
 }
 
 function storeHighScores() {
 
     localStorage.setItem("highscores", JSON.stringify(highscores));
-}
-   
+
   // When form is submitted...
   highscoreForm.addEventListener("submit", function(event) {
     event.preventDefault();
   
-    var intialText = intialsInput.value.trim();
+    var initialText = initialsInput.value.trim();
   
     // Return from function early if submitted todoText is blank
     if (initialText === "") {
@@ -193,15 +192,17 @@ function storeHighScores() {
     // enter in a link to the high scores page   
 
     // Add new todoText to todos array, clear the input
-    highscores.push(intialText);
-    intialsInput.value = "";
+    highscores.push(initialText);
+    initialsInput.value = "";
 
      // Stringify and set "todos" key in localStorage to todos array
      localStorage.setItem("highscores", JSON.stringify(highscores));
 
     console.log(highscores); 
   
-  });
+})
+   
+  };
 
 // add event listener to start quiz
 startBtn.addEventListener("click", startQuiz)
